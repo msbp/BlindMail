@@ -9,13 +9,19 @@ public class LogInScreen {
 
   //Class variables
   private JFrame mainFrame;
-
+  private JButton loginButton;
 
 
 
   private void setupGUI(){
       mainFrame = new JFrame("Log in");
-      mainFrame.setSize(600,500);
+      mainFrame.setSize(800,600);
+      mainFrame.setLocationRelativeTo(null);
+
+      loginButton = new JButton("Login");
+      mainFrame.add(loginButton, BorderLayout.CENTER);
+
+
       mainFrame.setVisible(true);
   }
 
