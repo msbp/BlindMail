@@ -11,8 +11,6 @@ public class LogInScreen {
   private JFrame mainFrame;
   private JButton loginButton;
 
-
-
   private void setupGUI(){
       mainFrame = new JFrame("Log in");
       mainFrame.setSize(800,600);
@@ -21,6 +19,12 @@ public class LogInScreen {
       loginButton = new JButton("Login");
       mainFrame.add(loginButton, BorderLayout.CENTER);
 
+      mainFrame.addWindowListener(new WindowAdapter(){
+        public void windowClosing(WindowEvent windowEvent){
+          System.out.println("- Login was closed. Application is quitting now.");
+          System.exit(0);
+        }
+      });
 
       mainFrame.setVisible(true);
   }
