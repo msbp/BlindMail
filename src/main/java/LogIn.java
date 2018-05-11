@@ -25,7 +25,38 @@ import java.util.List;
 
 public class LogIn {
 
-  public static void main (String args[]){
-    System.out.println("Hello world.");
+  private static final String APPLICATION_NAME = "BlindMail";
+  private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+  private static final String CREDENTIALS_FOLDER = "Credentials"; // Used to store credentials
+
+  private static final List<String> SCOPES = Collections.singletonList(GmailScopes.MAIL_GOOGLE_COM); //Scope to read, send, delete and manage emails
+  private static final String CLIENT_SECRET_DIR = "client_secret.json";
+
+  private static Credential c = null;
+
+  /**
+   * Creates an authorized Credential object.
+   * @param HTTP_TRANSPORT The network HTTP Transport.
+   * @return An authorized Credential object.
+   * @throws IOException If there is no client_secret.
+   */
+  private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+      // Load client secrets.
+      InputStream in = LogIn.class.getResourceAsStream(CLIENT_SECRET_DIR);
+      GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+
+      // Build flow and trigger user authorization request.
+      GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+              HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
+              .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(CREDENTIALS_FOLDER)))
+              .setAccessType("offline")
+              .build();
+      c = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+      return c;
   }
+
+  public static void main (String args[]){
+    System.out.println("LogIn.java has been compiled and ran.");
+  }
+
 }
