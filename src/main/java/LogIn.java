@@ -25,6 +25,8 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
+import java.io.File;
+import java.lang.SecurityException;
 
 public class LogIn {
 
@@ -60,6 +62,25 @@ public class LogIn {
   }
 
   /**
+   * Deletes the credential file if it exists.
+   * @return True if deleted or does not exist, false otherwise.
+   */
+   private static boolean deleteCredentials(){
+     String credentialsPath = "./Credentials/StoredCredential";
+     File f = new File(credentialsPath);
+     if (!f.exists()){
+       System.out.println("Attempting to delete stored credential.\n File removed.");
+       return true;
+     }
+     try {
+       return f.delete();
+     } catch (SecurityException e){
+       System.out.println("Access denied when trying to delete stored credentials.");
+       return false;
+     }
+   }
+
+  /**
    * Builds a new authorized API client service.
    * @return A newly built authorized API client service.
    * @throws IOException
@@ -72,6 +93,8 @@ public class LogIn {
                 .build();
      return service;
    }
+
+   
 
   /**
    * Getter for the Credential object.
