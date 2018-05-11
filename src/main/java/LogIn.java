@@ -55,6 +55,14 @@ public class LogIn {
       return c;
   }
 
+  /**
+   * Getter for the Credential object.
+   * @return An authorized Credential object.
+   */
+   public static Credential getC(){
+     return c;
+   }
+
   public static void main (String args[]){
     System.out.println("LogIn.java has been compiled and ran.");
   }
