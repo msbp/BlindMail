@@ -94,7 +94,13 @@ public class LogIn {
      return service;
    }
 
-   
+   /**
+    * Logs user out of account if they were authorized. This happens by deleting the stored credentials.
+    * @return True if it succeeds, false otherwise.
+    */
+    public static boolean logoutUser(){
+      return deleteCredentials();
+    }
 
   /**
    * Getter for the Credential object.
