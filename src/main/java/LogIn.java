@@ -51,7 +51,8 @@ public class LogIn {
               .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(CREDENTIALS_FOLDER)))
               .setAccessType("offline")
               .build();
-      return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+      c = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+      return c;
   }
 
   public static void main (String args[]){

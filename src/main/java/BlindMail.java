@@ -1,3 +1,6 @@
+import com.google.api.services.gmail.Gmail;
+import com.google.api.services.gmail.model.Label;
+import com.google.api.services.gmail.model.ListLabelsResponse;
 
 public class BlindMail{
 
