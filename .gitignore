@@ -1,3 +1,4 @@
 *.class
 src/main/java/Test.java
 Credentials/*
+*.sh
