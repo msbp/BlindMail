@@ -13,24 +13,18 @@ import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.Message;
 
-// Other imports
+// javax.mail package imports
 import javax.mail.Session;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.InternetAddress;
 
+// Other imports
 import java.util.Properties;
 import java.util.Base64;
 import java.io.ByteArrayOutputStream;
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.security.GeneralSecurityException;
-import java.util.Collections;
-import java.util.List;
-import java.io.File;
-import java.lang.SecurityException;
+
 
 public class SendMail {
 
@@ -59,7 +53,7 @@ public class SendMail {
   /**
    * Encodes Mime email to Base64 and creates a Message object.
    * @param email MimeMessage email created.
-   * @return A Message object (from google) with encoded email
+   * @return A Message object (from google) with encoded email.
    * @throws MessagingException
    * @throws IOException
    */
@@ -73,6 +67,23 @@ public class SendMail {
     return message;
   }
 
+  /**
+   * Creates a Mime formatted email.
+   * @param service An authenticated service.
+   * @param userId User's email address. "me" can be used to refer to authenticated user.
+   * @param emailContent email to be sent.
+   * @return The message sent. This can be used to get more information on the message sent.
+   * @throws MessagingException
+   * @throws IOException
+   */
+   private static Message sendMessage(Gmail service, String userId, MimeMessage emailContent) throws MessagingException, IOException {
+      Message message = encodeEmail(emailContent);
+      message = service.users().messages().send(userId, message).execute();
+
+      System.out.println("Message id: " + message.getId());
+      System.out.println(message.toPrettyString());
+      return message;
+   }
 
   public static void main (String args[]){
     System.out.println("Running SendMail.java.");
