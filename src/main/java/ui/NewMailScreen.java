@@ -19,6 +19,7 @@ public class NewMailScreen{
   private JPanel bodyPanel;
   private JLabel bodyLabel;
   private JTextArea bodyText;
+  private JButton sendButton;
 
   /**
    * Sets up the GUI.
@@ -48,10 +49,13 @@ public class NewMailScreen{
      bodyPanel = new JPanel();
      bodyPanel.add(bodyLabel);
      bodyPanel.add(bodyText);
+     // Send button
+     sendButton = new JButton("Send");
 
      mainPanel.add(toPanel);
      mainPanel.add(subjectPanel);
      mainPanel.add(bodyPanel);
+     mainPanel.add(sendButton);
      mainFrame.add(mainPanel);
      mainFrame.setVisible(true);
 
