@@ -24,6 +24,7 @@ import java.util.Properties;
 import java.util.Base64;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 
 public class SendMail {
@@ -85,7 +86,18 @@ public class SendMail {
       return message;
    }
 
-  public static void main (String args[]){
+  public static void main (String args[]) throws IOException, GeneralSecurityException, MessagingException{
     System.out.println("Running SendMail.java.");
+
+    // Testing sending email service
+    //
+    System.out.println("Start of test.");
+    LogIn test = new LogIn();
+    test.buildService();
+    MimeMessage m = createMimeEmail("mau.browne@hotmail.com", "mauricio.browne@gmail.com", "Testing service", "This is the body of the message! :)");
+    sendMessage(test.getService(), "me", m);
+    System.out.println("End of test.");
+    //
+    // End of test
   }
 }
