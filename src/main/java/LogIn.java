@@ -1,5 +1,6 @@
+package com.blindmail.code;
 /*
-* Most of the code here was adapted from google's Gmail API documentation
+* Some of the code here was adapted from google's Gmail API documentation
 */
 
 // Google imports

@@ -1,3 +1,5 @@
+package com.blindmail.code;
+
 // Google imports
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -91,12 +93,12 @@ public class SendMail {
 
     // Testing sending email service
     //
-    System.out.println("Start of test.");
-    LogIn test = new LogIn();
-    test.buildService();
-    MimeMessage m = createMimeEmail("mau.browne@hotmail.com", "mauricio.browne@gmail.com", "Testing service", "This is the body of the message! :)");
-    sendMessage(test.getService(), "me", m);
-    System.out.println("End of test.");
+    // System.out.println("Start of test.");
+    // LogIn test = new LogIn();
+    // test.buildService();
+    // MimeMessage m = createMimeEmail("mau.browne@hotmail.com", "mauricio.browne@gmail.com", "Testing service", "This is the body of the message! :)");
+    // sendMessage(test.getService(), "me", m);
+    // System.out.println("End of test.");
     //
     // End of test
   }

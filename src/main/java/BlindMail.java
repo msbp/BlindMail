@@ -1,3 +1,5 @@
+package com.blindmail.code;
+
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Label;
 import com.google.api.services.gmail.model.ListLabelsResponse;

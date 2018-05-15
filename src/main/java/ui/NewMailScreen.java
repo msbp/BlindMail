@@ -1,3 +1,6 @@
+package com.blindmail.ui;
+
+import com.blindmail.code.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -51,6 +54,7 @@ public class NewMailScreen{
      bodyPanel.add(bodyText);
      // Send button
      sendButton = new JButton("Send");
+     sendButton.addActionListener(new SendEmailListener());
 
      mainPanel.add(toPanel);
      mainPanel.add(subjectPanel);
@@ -66,6 +70,14 @@ public class NewMailScreen{
          System.exit(0);
        }
      });
+   }
+
+   // Class for handling sending email click action
+   private class SendEmailListener implements ActionListener {
+     // Method that is called when the button is clicked
+     public void actionPerformed(ActionEvent e) {
+
+     }
    }
 
   public static void main(String args[]) {
