@@ -54,6 +54,14 @@ public class NewMailScreen{
      mainPanel.add(bodyPanel);
      mainFrame.add(mainPanel);
      mainFrame.setVisible(true);
+
+     //Window close listener
+     mainFrame.addWindowListener(new WindowAdapter(){
+       public void windowClosing(WindowEvent windowEvent){
+         System.out.println("- NewMailScreen was closed. Application is quitting now.");
+         System.exit(0);
+       }
+     });
    }
 
   public static void main(String args[]) {
