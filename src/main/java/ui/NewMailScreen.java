@@ -1,9 +1,19 @@
+package main.java.ui;
+
+import main.java.code.*;
+
+// Other imports
+import java.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+// Exceptions
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import javax.mail.MessagingException;
 
 public class NewMailScreen{
 
@@ -19,6 +29,7 @@ public class NewMailScreen{
   private JPanel bodyPanel;
   private JLabel bodyLabel;
   private JTextArea bodyText;
+  private JButton sendButton;
 
   /**
    * Sets up the GUI.
@@ -48,10 +59,14 @@ public class NewMailScreen{
      bodyPanel = new JPanel();
      bodyPanel.add(bodyLabel);
      bodyPanel.add(bodyText);
+     // Send button
+     sendButton = new JButton("Send");
+     sendButton.addActionListener(new SendEmailListener());
 
      mainPanel.add(toPanel);
      mainPanel.add(subjectPanel);
      mainPanel.add(bodyPanel);
+     mainPanel.add(sendButton);
      mainFrame.add(mainPanel);
      mainFrame.setVisible(true);
 
@@ -62,6 +77,21 @@ public class NewMailScreen{
          System.exit(0);
        }
      });
+   }
+
+   // Class for handling sending email click action
+   private class SendEmailListener implements ActionListener {
+     // Method that is called when the button is clicked
+     public void actionPerformed(ActionEvent e) {
+       SendMail test = new SendMail();
+       try {
+         test.sendTestEmail();
+       } catch (IOException | GeneralSecurityException | MessagingException exc){
+         System.out.println("There was an IOException.");
+         System.out.println(exc);
+       }
+       System.out.println("Button pressed and test email sent.");
+     }
    }
 
   public static void main(String args[]) {
