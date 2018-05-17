@@ -1,4 +1,4 @@
-package com.blindmail.ui;
+package main.java.ui;
 
 import javax.swing.*;
 import java.awt.*;

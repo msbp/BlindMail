@@ -1,4 +1,4 @@
-package com.blindmail.code;
+package main.java.code;
 
 // Google imports
 import com.google.api.client.auth.oauth2.Credential;

@@ -1,4 +1,4 @@
-package com.blindmail.code;
+package main.java.code;
 /*
 * Some of the code here was adapted from google's Gmail API documentation
 */

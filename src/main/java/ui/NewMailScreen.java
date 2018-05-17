@@ -1,6 +1,9 @@
-package com.blindmail.ui;
+package main.java.ui;
 
-import com.blindmail.code.*;
+import main.java.code.*;
+
+// Other imports
+import java.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

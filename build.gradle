@@ -8,7 +8,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'com.blindmail.code.SendMail'
+mainClassName = 'main.java.code.SendMail'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 version = '1.0'

@@ -1,4 +1,4 @@
-package com.blindmail.code;
+package main.java.code;
 
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Label;
