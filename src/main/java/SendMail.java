@@ -93,9 +93,9 @@ public class SendMail {
 
     // Testing sending email service
     //
-    // System.out.println("Start of test.");
-    // LogIn test = new LogIn();
-    // test.buildService();
+    System.out.println("Start of test.");
+    LogIn test = new LogIn();
+    test.buildService();
     // MimeMessage m = createMimeEmail("mau.browne@hotmail.com", "mauricio.browne@gmail.com", "Testing service", "This is the body of the message! :)");
     // sendMessage(test.getService(), "me", m);
     // System.out.println("End of test.");
