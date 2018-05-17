@@ -31,10 +31,15 @@ public class NewMailScreen{
   private JTextArea bodyText;
   private JButton sendButton;
 
+  private SendMail sender;
+
   /**
    * Sets up the GUI.
    */
    private void setupGUI() {
+     // Initializing variables
+     sender = new SendMail();
+
      // Main Frame code
      mainFrame = new JFrame("New Mail");
      mainFrame.setSize(800, 600);
@@ -83,16 +88,11 @@ public class NewMailScreen{
    private class SendEmailListener implements ActionListener {
      // Method that is called when the button is clicked
      public void actionPerformed(ActionEvent e) {
-       SendMail test = new SendMail();
-       try {
-         test.sendTestEmail();
-       } catch (IOException | GeneralSecurityException | MessagingException exc){
-         System.out.println("There was an IOException.");
-         System.out.println(exc);
-       }
-       System.out.println("Button pressed and test email sent.");
+       System.out.println("Button was pressed.");
+       boolean response = sender.sendEmail("mau.browne@hotmail.com", "My subject", "This is the body of the message.");
      }
    }
+
 
   public static void main(String args[]) {
     System.out.println("Running NewMailScreen.java.");

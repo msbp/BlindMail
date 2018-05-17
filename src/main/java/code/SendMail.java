@@ -84,10 +84,35 @@ public class SendMail {
       message = service.users().messages().send(userId, message).execute();
 
       System.out.println("Message id: " + message.getId());
-      System.out.println(message.toPrettyString());
+      // System.out.println(message.toPrettyString());
       return message;
    }
 
+   /**
+    * Public method used by other classes to send emails.
+    * @param to Email address of recipient.
+    * @param subject Text subject of email.
+    * @param body Text body of email.
+    * @return True if the email is sent successfully or false if the email fails to send.
+    */
+   public static boolean sendEmail(String to, String subject, String body) {
+     System.out.println("\n***************************");
+     System.out.println("Attempting to send email...");
+     LogIn authenticator = new LogIn();
+     // Catching exception in case of error
+     try {
+       authenticator.buildService();
+       MimeMessage m = createMimeEmail(to, "from@gmail.com", subject, body);
+       sendMessage(authenticator.getService(), "me", m);
+     } catch(MessagingException | GeneralSecurityException | IOException e){
+       System.out.println("There was an error sending the email. Exception caught was: ");
+       System.out.println(e);
+       return false;
+     }
+     System.out.println("Email successfully sent.");
+     System.out.println("***************************\n");
+     return true;
+   }
 
    // Send test email
    public static void sendTestEmail() throws IOException, GeneralSecurityException, MessagingException {
