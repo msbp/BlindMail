@@ -89,11 +89,19 @@ public class NewMailScreen{
      // Method that is called when the button is clicked
      public void actionPerformed(ActionEvent e) {
        System.out.println("Button was pressed.");
-       boolean response = sender.sendEmail(toTextField.getText(), subjectTextField.getText(), bodyText.getText());
+       sendButton.setVisible(false);
+       boolean response = false;
+       int counter = 0;
+       while (response == false && counter < 10){
+         response = sender.sendEmail(toTextField.getText(), subjectTextField.getText(), bodyText.getText());
+         counter++;
+       }
+       //boolean response = sender.sendEmail(toTextField.getText(), subjectTextField.getText(), bodyText.getText());
        if (response == true){
          toTextField.setText("");
          subjectTextField.setText("");
          bodyText.setText("");
+         sendButton.setVisible(true);
        } else {
          // Create a pop up in the future
          System.out.println("\n\n\nPlease try again.\n\n\n");
